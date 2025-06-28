@@ -1,13 +1,14 @@
-function checkForSpam(message) {
-  const lowerCaseMessage = message.toLowerCase();
+function formatMessage(message, maxLength) {
+    if (message.length <= maxLength) {
+        return message
+    } else {
+        return message.slice(0, maxLength) + "...";
 
-  return lowerCaseMessage.includes("spam") || lowerCaseMessage.includes("sale");
+    }
 }
-
-console.log(checkForSpam("Latest technology news"));
-console.log(checkForSpam("JavaScript weekly newsletter"));
-console.log(checkForSpam("Get best sale offers now!"));
-console.log(checkForSpam("Amazing SalE, only tonight!"));
-console.log(checkForSpam("Trust me, this is not a spam message"));
-console.log(checkForSpam("Get rid of sPaM emails. Our book in on sale!"));
-console.log(checkForSpam("[SPAM] How to earn fast money?"));
+console.log(formatMessage("Curabitur ligula sapien", 16)); // "Curabitur ligula..."
+console.log(formatMessage("Curabitur ligula sapien", 23)); // "Curabitur ligula sapien"
+console.log(formatMessage("Vestibulum facilisis purus nec", 20)); // "Vestibulum facilisis..."
+console.log(formatMessage("Vestibulum facilisis purus nec", 30)); // "Vestibulum facilisis purus nec"
+console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 15)); // "Nunc sed turpis..."
+console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 41)); // "Nunc sed turpis a felis in nunc fringilla"
